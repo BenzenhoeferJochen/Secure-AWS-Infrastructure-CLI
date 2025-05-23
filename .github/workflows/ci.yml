@@ -15,13 +15,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Set up ShellCheck
-        uses: ludeeus/action-shellcheck@v2
+      - name: Run ShellCheck
+        uses: azohra/shellcheck-action@v0.8.0
+        with:
+          files: src/**/*.sh
 
-      - name: Run ShellCheck on all scripts
-        run: shellcheck src/**/*.sh
-
-      - name: Validate bash syntax
+      - name: Validate Bash Syntax
         run: |
           find src/ -name '*.sh' -exec bash -n {} \;
 
