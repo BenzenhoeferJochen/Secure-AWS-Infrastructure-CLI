@@ -1,3 +1,4 @@
+#! /bin/bash
 echo "CIDR Block"
 read cidr_block
 echo "Name"
