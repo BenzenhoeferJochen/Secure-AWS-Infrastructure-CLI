@@ -41,8 +41,8 @@ Secure-AWS-Infrastructure-CLI/
 │   │   └── main.sh                 # Orchestrates subnet creation logic
 │   │
 │   └── vpc/
-│       ├── create_vpc.sh           # Creates a VPC with CIDR configuration
-│       └── main.sh                 # VPC setup orchestration
+│   |   ├── create_vpc.sh           # Creates a VPC with CIDR configuration
+│   └── main.sh                     # VPC setup orchestration
 │
 ├── .gitignore                      # Files and folders to exclude from Git
 ├── LICENSE                         # Project license
