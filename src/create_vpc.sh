@@ -21,7 +21,7 @@ read vpc_name
 vpc_id=$(aws ec2 create-vpc --cidr-block $cidr_block --tag-specifications ResourceType=vpc,Tags=["{Key=Name,Value=$vpc_name}"])
 vpc_id=$( echo $vpc_id | grep -o "\"VpcId\": \".*")
 vpc_id=$( echo $vpc_id | cut -d "\"" -f 4)
-public_route_table_id=$(aws ec2 create-route-table --vpc-id $vpc_id --tag-specifications ResourceType=route-table,Tags=["{Key=Name,Value=Public Route Table"}] | grep -o "\"RouteTableId\": \".*" | cut -d "\"" -f 4)
+public_route_table_id=$(aws ec2 create-route-table --vpc-id $vpc_id --tag-specifications ResourceType=route-table,Tags=["{Key=Name,Value=Public Route Table}"] | grep -o "\"RouteTableId\": \".*" | cut -d "\"" -f 4)
 private_route_table_id=$(aws ec2 create-route-table --vpc-id $vpc_id --tag-specifications ResourceType=route-table,Tags=["{Key=Name,Value=Private Route Table}"] | grep -o "\"RouteTableId\": \".*" | cut -d "\"" -f 4)
 
 echo "Number of public subnets?"
