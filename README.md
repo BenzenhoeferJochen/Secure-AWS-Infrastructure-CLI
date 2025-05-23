@@ -33,16 +33,20 @@ Secure-AWS-Infrastructure-CLI/
 │   ├── login/
 │   │   └── login.sh                # Authenticates with AWS using CLI credentials
 │   │
+│   ├── internet_gateway/
+│   |   └── create_igw.sh           # Creates a Internet Gateway
+│   │
 │   ├── route_table/
-│   │   └── create_route_table.sh   # Creates route tables and associations
+│   │   └── create_route_table.sh   # Creates route tables
 │   │
 │   ├── subnet/
 │   │   ├── create_subnet.sh        # Provisions public and/or private subnets
 │   │   └── main.sh                 # Orchestrates subnet creation logic
 │   │
-│   └── vpc/
-│   |   ├── create_vpc.sh           # Creates a VPC with CIDR configuration
-│   └── main.sh                     # VPC setup orchestration
+│   ├── vpc/
+│   |   └── create_vpc.sh           # Creates a VPC with CIDR configuration
+│   │
+│   └── main.sh                     # Main script
 │
 ├── .gitignore                      # Files and folders to exclude from Git
 ├── LICENSE                         # Project license
@@ -71,14 +75,21 @@ Secure-AWS-Infrastructure-CLI/
 
 ## 🔧 Getting Started
 
-### 1. Clone the Repository
+### 1. Allow execution of the batch files
+
+```bash
+chmod +x src/*.sh
+chmod +x src/*/*.sh
+```
+
+### 2. Clone the Repository
 
 ```bash
 git clone git@github.com:BenzenhoeferJochen/Secure-AWS-Infrastructure-CLI.git
 cd Secure-AWS-Infrastructure-CLI
 ```
 
-### 2. Start the main.sh
+### 3. Start the main.sh
 
 ```bash
 ./src/main.sh
