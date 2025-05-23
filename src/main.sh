@@ -6,11 +6,7 @@ private_route_table_id=$(bash $script_dir/route_table/create_route_table.sh $vpc
 public_route_table_id=$(bash $script_dir/route_table/create_route_table.sh $vpc_id "Public Route Table" | tee /dev/tty| tail -1)
 public_subnets=$(bash $script_dir/subnet/main.sh $vpc_id $public_route_table_id "public" | tee /dev/tty| tail -1)
 private_subnets=$(bash $script_dir/subnet/main.sh $vpc_id $private_route_table_id "private" | tee /dev/tty| tail -1)
-
-
-echo "Internet gateway name?"
-read internet_gateway_name
-internet_gateway_id=$(aws ec2 create-internet-gateway --tag-specifications ResourceType=internet-gateway,Tags=["{Key=Name,Value=$internet_gateway_name}"] | grep -o "\"InternetGatewayId\": \".*" | cut -d "\"" -f 4)
+internet_gateway_id=$(bash $script_dir/internet_gateway/create_igw.sh | tee /dev/tty| tail -1)
 
 aws ec2 attach-internet-gateway --vpc-id $vpc_id --internet-gateway-id $internet_gateway_id
 
